@@ -9,11 +9,10 @@ Run [Nomic Embed Text](https://ollama.com/library/nomic-embed-text) on Lilypad N
 ```sh
 export WEB3_PRIVATE_KEY=WEB3_PRIVATE_KEY
 
-lilypad run github.com/DevlinRocha/lilypad-nomic-embed-text:828393593e988fb4c379d4585303c417ec395024 \
+lilypad run github.com/DevlinRocha/lilypad-nomic-embed-text:49902143457c9ce878ced4c84c9d57035bbbb57d \
 -i request="$(echo -n '{
   "model": "nomic-embed-text",
-  "input": "The sky is blue because of Rayleigh scattering",
-  "stream": false,
+  "input": "The sky is blue because of Rayleigh scattering"
 }' | base64 -w 0)"
 ```
 
