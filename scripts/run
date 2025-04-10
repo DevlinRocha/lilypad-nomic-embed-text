@@ -20,8 +20,9 @@ fi
 function request {
     if ! printenv | grep -q "WEB3_PRIVATE_KEY=."; then
         printf "Enter your wallet private key: "
-        read -r private_key
+        read -rs private_key
         WEB3_PRIVATE_KEY=$private_key
+        echo "<SECRET>"
         echo "Private key set"
         echo "(Hint: Use 'export WEB3_PRIVATE_KEY=<PRIVATE_KEY>' to avoid this prompt in the future)"
     fi
@@ -33,11 +34,9 @@ function request {
   },
   {
     "role": "user",
-    "content": "what is the animal order of the frog?"
+    "content": "what order do frogs belong to?"
   }],
-  "options": {
-    "temperature": 1.0
-  }
+  "temperature": 0.6
 '
     printf "(Paste JSON as one line) ➔ "
     read -r request
@@ -46,7 +45,6 @@ function request {
 
 if [ $# -gt 2 ]; then
     echo "Usage: scripts/run [--local] <request>"
-    echo "Example: scripts/run 'What animal order do frogs belong to?'"
     exit 1
 elif [ $# -eq 0 ]; then
     request
